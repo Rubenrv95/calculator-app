@@ -1,0 +1,15 @@
+# Go
+backend/coverage.out
+backend/coverage.html
+backend/*.test
+
+# Node / Vite
+frontend/node_modules/
+frontend/dist/
+frontend/*.local
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

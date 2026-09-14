@@ -1,3 +1,3 @@
-module github.com/TU_USUARIO/calculator-app/backend
+module github.com/Rubenrv95/calculator-app/backend
 
 go 1.27.1
