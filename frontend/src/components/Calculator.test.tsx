@@ -73,7 +73,7 @@ describe('Calculator', () => {
   })
 
   it('displays the backend error message when the API call fails', async () => {
-    calculateMock.mockRejectedValue(new ApiError('division by zero'))
+    calculateMock.mockRejectedValue(new ApiError('Division by zero'))
     const user = userEvent.setup()
     render(<Calculator />)
 
@@ -82,6 +82,6 @@ describe('Calculator', () => {
     await user.type(screen.getByLabelText('Second number'), '0')
     await user.click(screen.getByRole('button', { name: 'Calculate' }))
 
-    expect(await screen.findByRole('alert')).toHaveTextContent('division by zero')
+    expect(await screen.findByRole('alert')).toHaveTextContent('Division by zero')
   })
 })

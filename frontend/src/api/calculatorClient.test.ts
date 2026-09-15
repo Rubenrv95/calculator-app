@@ -32,12 +32,12 @@ describe('calculate', () => {
       'fetch',
       vi.fn().mockResolvedValue({
         ok: false,
-        json: async () => ({ error: 'division by zero' }),
+        json: async () => ({ error: 'Division by zero' }),
       }),
     )
 
     await expect(calculate({ operation: 'divide', a: 10, b: 0 })).rejects.toThrow(
-      new ApiError('division by zero'),
+      new ApiError('Division by zero'),
     )
   })
 

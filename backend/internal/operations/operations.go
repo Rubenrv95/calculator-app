@@ -10,7 +10,7 @@ import (
 )
 
 // ErrDivisionByZero is returned when a division's divisor is zero.
-var ErrDivisionByZero = errors.New("division by zero")
+var ErrDivisionByZero = errors.New("Division by zero")
 
 // ErrNegativeSqrt is returned when the square root of a negative number is requested.
 var ErrNegativeSqrt = errors.New("square root of a negative number is not a real number")

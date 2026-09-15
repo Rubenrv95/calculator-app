@@ -94,7 +94,7 @@ export function Calculator() {
 
       {error && (
         <p className="result result--error" role="alert">
-          {error}
+          Error: {error}
         </p>
       )}
 
