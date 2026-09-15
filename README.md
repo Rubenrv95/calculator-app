@@ -98,7 +98,7 @@ For `percent`, the result is "`a`% of `b`" (e.g. `a=50, b=200` → `100`).
 { "result": 15 }
 ```
 
-**Examples:**
+**Examples (one per operation):**
 
 ```bash
 # Addition
@@ -107,13 +107,43 @@ curl -X POST http://localhost:8080/calculate \
   -d '{"operation":"add","a":10,"b":5}'
 # → {"result":15}
 
+# Subtraction
+curl -X POST http://localhost:8080/calculate \
+  -H "Content-Type: application/json" \
+  -d '{"operation":"subtract","a":10,"b":5}'
+# → {"result":5}
+
+# Multiplication
+curl -X POST http://localhost:8080/calculate \
+  -H "Content-Type: application/json" \
+  -d '{"operation":"multiply","a":10,"b":5}'
+# → {"result":50}
+
+# Division
+curl -X POST http://localhost:8080/calculate \
+  -H "Content-Type: application/json" \
+  -d '{"operation":"divide","a":10,"b":5}'
+# → {"result":2}
+
+# Exponentiation
+curl -X POST http://localhost:8080/calculate \
+  -H "Content-Type: application/json" \
+  -d '{"operation":"power","a":2,"b":10}'
+# → {"result":1024}
+
 # Square root (b is not needed)
 curl -X POST http://localhost:8080/calculate \
   -H "Content-Type: application/json" \
   -d '{"operation":"sqrt","a":16}'
 # → {"result":4}
 
-# Division by zero
+# Percentage (a% of b)
+curl -X POST http://localhost:8080/calculate \
+  -H "Content-Type: application/json" \
+  -d '{"operation":"percent","a":50,"b":200}'
+# → {"result":100}
+
+# Error example: division by zero
 curl -X POST http://localhost:8080/calculate \
   -H "Content-Type: application/json" \
   -d '{"operation":"divide","a":10,"b":0}'
@@ -170,6 +200,12 @@ Liveness endpoint, returns `{"status":"ok"}` with `200 OK`.
   backend error response (uses the message returned by the API) from a
   network failure (server down), always showing a readable message in the
   UI instead of a raw error.
+- **Dark mode**: a toggle in the top-right corner (`useTheme` +
+  `ThemeToggle`) switches between a light and a dark, red-accented theme.
+  The choice is persisted in `localStorage` and falls back to the OS's
+  `prefers-color-scheme` on first load; the themes are implemented as CSS
+  custom properties swapped via a `data-theme` attribute on `<html>`, with
+  no extra styling library.
 
 **Assumptions:**
 
@@ -194,7 +230,7 @@ go test ./... -coverprofile=coverage.out
 go tool cover -html=coverage.out -o=coverage.html
 ```
 
-Current coverage: ~98% in `internal/handlers`, ~85% in `internal/operations`.
+Current coverage: ~98% in `internal/handlers`, ~97% in `internal/operations`.
 
 **Frontend:**
 
@@ -205,7 +241,7 @@ npm run test:watch      # watch mode
 npm run test:coverage   # tests + coverage report (frontend/coverage/index.html)
 ```
 
-Current coverage: ~96% of statements.
+Current coverage: ~97% of statements.
 
 ## Docker
 

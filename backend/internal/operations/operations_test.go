@@ -98,6 +98,10 @@ func TestCalculate(t *testing.T) {
 		{"percent", models.OpPercent, f(10), f(50), 5, nil},
 		{"missing a", models.OpAdd, nil, f(3), 0, ErrMissingOperand},
 		{"missing b for add", models.OpAdd, f(2), nil, 0, ErrMissingOperand},
+		{"missing b for subtract", models.OpSubtract, f(2), nil, 0, ErrMissingOperand},
+		{"missing b for multiply", models.OpMultiply, f(2), nil, 0, ErrMissingOperand},
+		{"missing b for power", models.OpPower, f(2), nil, 0, ErrMissingOperand},
+		{"missing b for percent", models.OpPercent, f(2), nil, 0, ErrMissingOperand},
 		{"unsupported operation", models.Operation("modulo"), f(2), f(3), 0, ErrUnsupportedOperation},
 	}
 

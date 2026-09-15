@@ -91,3 +91,24 @@ Code comments were already written in English throughout the backend and
 frontend (user-facing strings in the UI remained in Spanish, since that's
 application content rather than documentation). `README.md` and this file
 were translated to English.
+
+## 9. Final review before delivery
+
+> "El proyecto de la calculadora full-stack (React + TypeScript / Go) ya
+> está implementado completamente, tanto frontend como backend, y ya fue
+> subido a GitHub. Antes de entregarlo a la empresa, necesito que hagas una
+> revisión final exhaustiva. No agregues features nuevas ni cambies el
+> diseño ya implementado salvo que encuentres algo roto o incompleto
+> respecto a lo que se pidió originalmente. Repórtame en detalle lo que
+> encuentres en cada punto antes de corregir nada, y corrige solo si te lo
+> confirmo.
+>
+> 1. Verificación funcional end-to-end [...]
+> 2. Tests y cobertura [...]
+> 3. Revisión del README [...]"
+
+Claude ran the backend and hit every operation and edge case with `curl`,
+reviewed the frontend API client to confirm it calls the real backend (no
+mocks in production code), ran both test suites with coverage, and checked
+the README against the checklist from the original requirements —
+reporting findings without applying any fix, as instructed.
